@@ -15,11 +15,11 @@ module.exports = {
    /*   library: { type: "var", name: "angularApp" },*/
       filename: "remoteEntry.js",
       remotes: {
-        reactParcel: "reactParcel@http://localhost:3002/remoteEntry.js",
-        angularParcel: "angularParcel@http://localhost:3004/remoteEntry.js",
+        reactApp: "reactApp@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
         "./App": "./src/app/app.single-spa.ts",
+        "./Parcel": "./src/app/parcel/parcel.single-spa.ts",
       },
       shared: {
         "@angular/core": { eager: true, singleton: true },

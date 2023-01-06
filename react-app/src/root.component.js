@@ -7,7 +7,7 @@ export default function Root(props) {
     <section>
       {props.name ?? "Standalone react-app"} is mounted!
       <Parcel
-        config={() => import("reactParcel/App")}
+        config={() => import("./parcel/parcel.component.single-spa")}
         mountParcel={mountRootParcel}
         customProp1="Parent prop1"
         wrapWith="h1"
@@ -16,7 +16,7 @@ export default function Root(props) {
         parcelDidMount={() => console.log("React parcel mounted")}
       />
       <Parcel
-        config={() => import("angularParcel/App")}
+        config={() => import("angularApp/Parcel")}
         mountParcel={mountRootParcel}
         customProp1="Parent prop1"
         wrapWith="h1"

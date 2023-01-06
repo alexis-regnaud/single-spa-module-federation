@@ -12,10 +12,10 @@ export class AppComponent {
   parcelProps = { customProp1: 'Parent prop1' };
   target = document.body;
   async config() {
-    return import('reactParcel/App');
+    return import('reactApp/Parcel');
   }
   async ngconfig() {
-    return import('angularParcel/App');
+    return import('./parcel/parcel.single-spa');
   }
 
   parcelMounted():void {
