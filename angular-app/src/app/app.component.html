@@ -1,0 +1,19 @@
+<section>
+  <span>{{ title }} is running!</span>
+  <parcel
+    [config]="config"
+    [mountParcel]="mountRootParcel"
+    [customProps]="parcelProps"
+    wrapWith="h1"
+    [onParcelMount]="parcelMounted"
+    [appendTo]="target"
+  ></parcel>
+  <parcel
+    [config]="ngconfig"
+    [mountParcel]="mountRootParcel"
+    [customProps]="parcelProps"
+    wrapWith="h1"
+    [onParcelMount]="ngparcelMounted"
+    [appendTo]="target"
+  ></parcel>
+</section>
