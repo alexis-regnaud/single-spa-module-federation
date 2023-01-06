@@ -1,5 +1,5 @@
 {
-  "name": "@app/root-config",
+  "name": "single-spa-module-federation",
   "scripts": {
     "start" : "pnpm -stream -parallel -filter \"@org/*\" run start",
     "postinstall": "pnpm -stream -filter \"@org/*\" install"
