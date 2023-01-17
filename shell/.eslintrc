@@ -1,4 +1,17 @@
 {
-  "extends": ["important-stuff", "plugin:prettier/recommended"],
-  "parser": "@babel/eslint-parser"
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "important-stuff",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
 }

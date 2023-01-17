@@ -15,6 +15,7 @@ const routes = constructRoutes(microfrontendLayout);
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
+    // @ts-ignore
     return mfImport[name]();
   },
 });

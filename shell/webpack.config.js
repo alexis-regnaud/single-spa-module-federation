@@ -4,10 +4,8 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
-
-
 const config = {
-  entry: "./src/index",
+  entry: "./src/index.ts",
   cache: false,
   mode: "development",
   devtool: "source-map",
@@ -32,6 +30,17 @@ const config = {
   module: {
     rules: [
       {
+        // Typescript loader
+        test: /\.tsx?$/,
+        exclude: /(node_modules|\.webpack)/,
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+          },
+        },
+      },
+      /*      {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
         options: {
@@ -42,7 +51,7 @@ const config = {
         test: /\.js$/,
         exclude: [path.resolve(__dirname, "node_modules")],
         loader: "babel-loader",
-      },
+      },*/
       {
         // This plugin will allow us to use AngularJS HTML templates
         test: /\.html$/,
@@ -70,7 +79,7 @@ const config = {
         reactApp: "reactApp@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
-        "./App": "./src/bootstrap",
+        "./App": "./src/bootstrap.ts",
       },
       shared: {
         "single-spa": {
