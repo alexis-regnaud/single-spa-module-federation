@@ -9,7 +9,7 @@ const path = require("path");
 const deps = require("./package.json").dependencies;
 
 module.exports = {
-  entry: "./src/index",
+  entry: "./src/index.ts",
   cache: false,
   mode: "development",
   devtool: "source-map",
@@ -28,25 +28,35 @@ module.exports = {
     minimize: false,
   },
   resolve: {
-    extensions: [".jsx", ".js", ".json"],
+    extensions: [".tsx", ".jsx", ".js", ".json"],
   },
-
   module: {
     rules: [
-      {
+      /*      {
         test: /\.jsx?$/,
         loader: require.resolve("babel-loader"),
         options: {
           presets: [require.resolve("@babel/preset-react")],
         },
+      },*/
+
+      {
+        // Typescript loader
+        test: /\.tsx?$/,
+        exclude: /(node_modules|\.webpack)/,
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+          },
+        },
       },
     ],
   },
-
   plugins: [
     new ModuleFederationPlugin({
       name: "reactApp",
-     // library: { type: "var", name: "reactApp" },
+      // library: { type: "var", name: "reactApp" },
       filename: "remoteEntry.js",
       remotes: {
         angularApp: "angularApp@http://localhost:3003/remoteEntry.js",
@@ -76,9 +86,6 @@ module.exports = {
     }),
   ],
 };
-
-
-
 
 /*
 module.exports = (webpackConfigEnv, argv) => {

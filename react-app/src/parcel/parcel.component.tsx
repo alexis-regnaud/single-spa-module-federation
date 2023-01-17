@@ -1,5 +1,11 @@
 import React from "react";
-export default function ParcelComponent(props) {
+
+interface ParcelComponentProps {
+  name?: string;
+  customProp1?: string;
+}
+
+export default function ParcelComponent(props: ParcelComponentProps) {
   return (
     <section>
       Parcel component with {props.name} is mounted!
