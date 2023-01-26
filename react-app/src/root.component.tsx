@@ -2,7 +2,7 @@ import React from "react";
 import Parcel from "single-spa-react/parcel";
 import { mountRootParcel } from "single-spa";
 
-interface RootProps {
+export interface RootProps {
   name?: string;
 }
 
@@ -19,7 +19,7 @@ export default function Root(props: RootProps) {
         handleError={(err) => console.log(err)}
         parcelDidMount={() => console.log("React parcel mounted")}
       />
-      <Parcel
+      {/*      <Parcel
         config={() => import("angularApp/Parcel")}
         mountParcel={mountRootParcel}
         customProp1="Parent prop1"
@@ -27,7 +27,7 @@ export default function Root(props: RootProps) {
         wrapStyle={{ color: "green" }}
         handleError={(err) => console.log(err)}
         parcelDidMount={() => console.log("Angular parcel mounted")}
-      />
+      />*/}
     </section>
   );
 }

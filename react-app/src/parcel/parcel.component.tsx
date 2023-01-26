@@ -1,6 +1,6 @@
 import React from "react";
 
-interface ParcelComponentProps {
+export interface ParcelComponentProps {
   name?: string;
   customProp1?: string;
 }

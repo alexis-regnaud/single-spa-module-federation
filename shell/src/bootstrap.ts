@@ -7,7 +7,7 @@ import {
 import microfrontendLayout from "./microfrontend-layout.html";
 
 const mfImport = {
-  "angularApp/App": () => import("angularApp/App"),
+  /*  "angularApp/App": () => import("angularApp/App"),*/
   "reactApp/App": () => import("reactApp/App"),
 };
 

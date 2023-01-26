@@ -1,1 +1,0 @@
-declare module "angularApp/Parcel";

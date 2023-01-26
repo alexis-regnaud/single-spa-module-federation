@@ -1,8 +1,10 @@
 //const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+//const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
 const deps = require("./package.json").dependencies;
+const FederatedTypesPlugin =
+  require("@module-federation/typescript").FederatedTypesPlugin;
 
 const config = {
   entry: "./src/index.ts",
@@ -70,21 +72,23 @@ const config = {
   },
 
   plugins: [
-    new ModuleFederationPlugin({
-      name: "shell",
-      /*   library: { type: "var", name: "shell" },*/
-      filename: "remoteEntry.js",
-      remotes: {
-        angularApp: "angularApp@http://localhost:3003/remoteEntry.js",
-        reactApp: "reactApp@http://localhost:3001/remoteEntry.js",
-      },
-      exposes: {
-        "./App": "./src/bootstrap.ts",
-      },
-      shared: {
-        "single-spa": {
-          singleton: true,
-          requiredVersion: deps["single-spa"],
+    new FederatedTypesPlugin({
+      federationConfig: {
+        name: "shell",
+        /*   library: { type: "var", name: "shell" },*/
+        filename: "remoteEntry.js",
+        remotes: {
+          /* angularApp: "angularApp@http://localhost:3003/remoteEntry.js",*/
+          reactApp: "reactApp@http://localhost:3001/remoteEntry.js",
+        },
+        exposes: {
+          "./App": "./src/bootstrap.ts",
+        },
+        shared: {
+          "single-spa": {
+            singleton: true,
+            requiredVersion: deps["single-spa"],
+          },
         },
       },
     }),
@@ -93,5 +97,7 @@ const config = {
     }),
   ],
 };
+
+console.log("config", config);
 
 module.exports = config;
